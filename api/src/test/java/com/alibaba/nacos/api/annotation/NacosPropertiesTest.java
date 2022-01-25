@@ -70,8 +70,7 @@ public class NacosPropertiesTest {
         testResolvePlaceholder(ENCODE_PLACEHOLDER, "", "test-value", "UTF-8");
     }
     
-    private void testResolvePlaceholder(String placeholder, String propertyName, String propertyValue,
-            String expectValue) {
+    private void testResolvePlaceholder(String placeholder, String propertyName, String propertyValue, String expectValue) {
         MockEnvironment environment = new MockEnvironment();
         environment.setProperty(propertyName, propertyValue);
         String resolvedValue = environment.resolvePlaceholders(placeholder);

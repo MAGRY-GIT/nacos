@@ -34,7 +34,7 @@ import java.security.cert.X509Certificate;
 import java.util.Collection;
 
 /**
- * A TrustManager tool returns the specified TrustManager.
+ * TrustManager 工具返回指定的 TrustManager。
  *
  * @author wangwei
  */

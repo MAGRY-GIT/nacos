@@ -25,7 +25,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * An annotation for Nacos Properties.
+ * Nacos 属性的注释。
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see PropertyKeyConst
@@ -37,42 +37,42 @@ import java.lang.annotation.Target;
 public @interface NacosProperties {
     
     /**
-     * The prefix of property name of Nacos.
+     * Nacos 属性名前缀。
      */
     String PREFIX = "nacos.";
     
     /**
-     * The property name of "endpoint".
+     * "端点"的属性名称.
      */
     String ENDPOINT = "endpoint";
     
     /**
-     * The property name of "namespace".
+     * “命名空间”的属性名称。
      */
     String NAMESPACE = "namespace";
     
     /**
-     * The property name of "access-key".
+     * “访问密钥”的属性名称。
      */
     String ACCESS_KEY = "access-key";
     
     /**
-     * The property name of "secret-key".
+     * “密钥”的属性名称。
      */
     String SECRET_KEY = "secret-key";
     
     /**
-     * The property name of "server-addr".
+     * “server-addr”的属性名称。
      */
     String SERVER_ADDR = "server-addr";
     
     /**
-     * The property name of "context-path".
+     * “上下文路径”的属性名称。
      */
     String CONTEXT_PATH = "context-path";
     
     /**
-     * The property name of "cluster-name".
+     *“cluster-name”的属性名称。
      */
     String CLUSTER_NAME = "cluster-name";
     

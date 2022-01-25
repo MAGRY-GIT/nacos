@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Certificate file update monitoring
+ * 证书文件更新监控
  *
  * <p>Considering that the current client needs to support jdk 1.6 and module dependencies ,
  * the WatchFileCenter in the core module is not used

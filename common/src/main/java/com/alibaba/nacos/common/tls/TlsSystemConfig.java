@@ -17,7 +17,7 @@
 package com.alibaba.nacos.common.tls;
 
 /**
- * tls system config.
+ * tls系统配置。
  *
  * @author wangwei
  */

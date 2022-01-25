@@ -26,7 +26,7 @@ import com.alibaba.nacos.common.notify.listener.Subscriber;
  * @author xiweng.yy
  */
 public interface ShardedEventPublisher extends EventPublisher {
-    
+
     /**
      * 为默认共享发行者添加侦听器。
      *
@@ -34,7 +34,7 @@ public interface ShardedEventPublisher extends EventPublisher {
      * @param subscribeType 订阅事件类型，如慢速事件、普通事件。
      */
     void addSubscriber(Subscriber subscriber, Class<? extends Event> subscribeType);
-    
+
     /**
      * 删除默认共享发行者的侦听器。
      *

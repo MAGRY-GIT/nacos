@@ -22,7 +22,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Name thread factory.
+ * 线程工厂名称.
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  */

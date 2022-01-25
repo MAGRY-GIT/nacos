@@ -21,7 +21,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Utils for build {@link SSLContext}.
+ *用于构建的实用程序{@link SSLContext}.
  *
  * <p>Currently only supports client-side
  *

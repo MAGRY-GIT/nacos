@@ -1,0 +1,1 @@
+主要是实现Spring的PropertySource的后置处理器,用于加载nacos的default的配置信息.

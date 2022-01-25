@@ -17,7 +17,7 @@
 package com.alibaba.nacos.api.ability;
 
 /**
- * remote abilities of nacos client.
+ * nacos 客户端的远程能力。
  *
  * @author liuzunfei
  * @version $Id: ClientRemoteAbility.java, v 0.1 2021年01月24日 00:09 AM liuzunfei Exp $

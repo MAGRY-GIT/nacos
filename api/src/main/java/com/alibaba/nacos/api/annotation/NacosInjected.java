@@ -26,7 +26,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * An annotation to inject {@link ConfigService} or {@link NamingService} instance into the target Bean.
+ * 要注入的注解{@link ConfigService} 或 {@link NamingService}实例到目标 Bean。
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see ConfigService
@@ -40,7 +40,7 @@ import java.lang.annotation.Target;
 public @interface NacosInjected {
     
     /**
-     * The {@link NacosProperties} attribute, If not specified, it will use global Nacos Properties.
+     * {@link NacosProperties} 属性，如果没有指定，它将使用全局 Nacos 属性。
      *
      * @return the default value is {@link NacosProperties}
      */

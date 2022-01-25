@@ -1,0 +1,16 @@
+nacos-console
+    nacos-nameing
+        nacos-cmdb
+            nacos-api
+            nacos-core
+        nacos-core
+        nacos-api
+    nacos-config
+        nacos-api
+        nacos-core
+    istio
+        nacos-api
+        nacos-core
+        nacos-client
+        nacos-config
+        nacos-nameing

@@ -24,7 +24,7 @@ import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Nacos SPI Service Loader.
+ * Nacos SPI 服务加载程序。
  *
  * @author xiweng.yy
  */
@@ -33,7 +33,7 @@ public class NacosServiceLoader {
     private static final Map<Class<?>, Collection<Class<?>>> SERVICES = new ConcurrentHashMap<Class<?>, Collection<Class<?>>>();
     
     /**
-     * Load service.
+     * 负载的服务。
      *
      * <p>Load service by SPI and cache the classes for reducing cost when load second time.
      *

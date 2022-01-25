@@ -17,7 +17,7 @@
 package com.alibaba.nacos.api;
 
 /**
- * Support for reading the value of the specified variable from the -D parameter.
+ *支持从-D参数中读取指定变量的值。
  *
  * <p>Properties that are preferred to which in {@link PropertyKeyConst}
  *

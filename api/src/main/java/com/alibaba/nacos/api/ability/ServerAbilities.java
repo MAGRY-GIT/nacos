@@ -23,43 +23,43 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * abilities of nacos server.
+ * nacos 服务器的能力。
  *
  * @author liuzunfei
  * @version $Id: ServerAbilities.java, v 0.1 2021年01月24日 00:09 AM liuzunfei Exp $
  */
 public class ServerAbilities implements Serializable {
-    
+
     private ServerRemoteAbility remoteAbility = new ServerRemoteAbility();
-    
+
     private ServerConfigAbility configAbility = new ServerConfigAbility();
-    
+
     private ServerNamingAbility namingAbility = new ServerNamingAbility();
-    
+
     public ServerRemoteAbility getRemoteAbility() {
         return remoteAbility;
     }
-    
+
     public void setRemoteAbility(ServerRemoteAbility remoteAbility) {
         this.remoteAbility = remoteAbility;
     }
-    
+
     public ServerConfigAbility getConfigAbility() {
         return configAbility;
     }
-    
+
     public void setConfigAbility(ServerConfigAbility configAbility) {
         this.configAbility = configAbility;
     }
-    
+
     public ServerNamingAbility getNamingAbility() {
         return namingAbility;
     }
-    
+
     public void setNamingAbility(ServerNamingAbility namingAbility) {
         this.namingAbility = namingAbility;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -72,7 +72,7 @@ public class ServerAbilities implements Serializable {
         return Objects.equals(remoteAbility, that.remoteAbility) && Objects.equals(configAbility, that.configAbility)
                 && Objects.equals(namingAbility, that.namingAbility);
     }
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(remoteAbility, configAbility, namingAbility);

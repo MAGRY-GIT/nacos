@@ -1,0 +1,1 @@
+主要是打包nacos-server的操作,使用maven-assembly-plugin进行自定义打包,

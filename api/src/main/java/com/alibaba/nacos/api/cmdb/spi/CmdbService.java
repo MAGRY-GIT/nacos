@@ -25,37 +25,37 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Service to visit CMDB store.
+ * 访问 CMDB 商店的服务。
  *
  * @author nkorange
  * @since 0.7.0
  */
 public interface CmdbService {
-    
+
     /**
-     * Get all label names stored in CMDB.
+     * 获取存储在CMDB中的所有标签名称。
      *
      * @return label name set
      */
     Set<String> getLabelNames();
-    
+
     /**
-     * Get all possible entity types in CMDB.
+     * 获取CMDB中所有可能的实体类型。
      *
      * @return all entity types
      */
     Set<String> getEntityTypes();
-    
+
     /**
-     * Get label info.
+     * 标签信息。
      *
      * @param labelName label name
      * @return label info
      */
     Label getLabel(String labelName);
-    
+
     /**
-     * Get label value of label name of ip.
+     * 获取ip的标签名的标签值。
      *
      * @param entityName entity name
      * @param entityType entity type
@@ -63,33 +63,33 @@ public interface CmdbService {
      * @return label value
      */
     String getLabelValue(String entityName, String entityType, String labelName);
-    
+
     /**
-     * Get all label value of ip.
+     * 获取ip的所有标签值。
      *
      * @param entityName entity name
      * @param entityType entity type
      * @return all label values
      */
     Map<String, String> getLabelValues(String entityName, String entityType);
-    
+
     /**
      * Dump all entities in CMDB.
      *
      * @return all entities
      */
     Map<String, Map<String, Entity>> getAllEntities();
-    
+
     /**
-     * get label change events.
+     * 获取标签更改事件。
      *
      * @param timestamp start time of generated events
      * @return label events
      */
     List<EntityEvent> getEntityEvents(long timestamp);
-    
+
     /**
-     * Get single entity.
+     * 得到单一的实体。
      *
      * @param entityName name of entity
      * @param entityType type of entity

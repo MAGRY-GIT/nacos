@@ -17,7 +17,7 @@
 package com.alibaba.nacos.common.spi;
 
 /**
- * Nacos service loader exception.
+ * Nacos service 装载机例外。
  *
  * @author xiweng.yy
  */
