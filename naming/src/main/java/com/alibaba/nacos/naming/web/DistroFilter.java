@@ -49,7 +49,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Distro filter.
+ * Distro 过滤器.
  *
  * @author nacos
  */

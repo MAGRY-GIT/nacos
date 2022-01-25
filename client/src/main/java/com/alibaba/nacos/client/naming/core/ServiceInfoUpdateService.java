@@ -41,7 +41,7 @@ import java.util.concurrent.TimeUnit;
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 
 /**
- * Service information update service.
+ * 服务信息更新服务。
  *
  * @author xiweng.yy
  */

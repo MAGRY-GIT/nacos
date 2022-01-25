@@ -22,7 +22,7 @@ import com.alibaba.nacos.auth.model.Permission;
 import com.alibaba.nacos.auth.model.User;
 
 /**
- * Address server auth manager.
+ * 地址服务器身份验证管理器。
  *
  * <p>For #3091, Only implement an empty auth manager so that address server can startup.</p>
  *

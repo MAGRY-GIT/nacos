@@ -23,11 +23,11 @@ import com.alibaba.nacos.address.misc.Loggers;
 import com.alibaba.nacos.api.common.Constants;
 import com.alibaba.nacos.api.naming.pojo.healthcheck.AbstractHealthChecker;
 import com.alibaba.nacos.common.utils.InternetAddressUtil;
+import com.alibaba.nacos.common.utils.StringUtils;
 import com.alibaba.nacos.naming.core.Cluster;
 import com.alibaba.nacos.naming.core.Instance;
 import com.alibaba.nacos.naming.core.Service;
 import com.alibaba.nacos.naming.core.ServiceManager;
-import com.alibaba.nacos.common.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +39,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Address server cluster controller.
+ * 地址服务器集群控制器。
  *
  * @author pbting
  * @since 1.1.0
@@ -47,41 +47,41 @@ import java.util.List;
 @RestController
 @RequestMapping({AddressServerConstants.ADDRESS_SERVER_REQUEST_URL + "/nodes"})
 public class AddressServerClusterController {
-    
+
     @Autowired
     private ServiceManager serviceManager;
-    
+
     @Autowired
     private AddressServerManager addressServerManager;
-    
+
     @Autowired
     private AddressServerGeneratorManager addressServerGeneratorManager;
-    
+
     /**
-     * Create new cluster.
+     *创建新集群。
      *
-     * @param product Ip list of products to be associated
-     * @param cluster Ip list of product cluster to be associated
-     * @param ips     will post ip list.
-     * @return result of create new cluster
+     * @param product 要关联的产品的ip列表
+     * @param cluster 要关联的产品集群的ip列表
+     * @param ips     将发布IP列表。
+     * @return 创建新集群的结果
      */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<String> postCluster(@RequestParam(required = false) String product,
-            @RequestParam(required = false) String cluster, @RequestParam(name = "ips") String ips) {
-        
-        //1. prepare the storage name for product and cluster
+                                              @RequestParam(required = false) String cluster, @RequestParam(name = "ips") String ips) {
+
+        //1. 准备产品和集群的存储名称
         String productName = addressServerGeneratorManager.generateProductName(product);
         String clusterName = addressServerManager.getDefaultClusterNameIfEmpty(cluster);
-        
-        //2. prepare the response name for product and cluster to client
+
+        //2. 为客户准备产品和集群的响应名称
         String rawProductName = addressServerManager.getRawProductName(product);
         String rawClusterName = addressServerManager.getRawClusterName(cluster);
-        Loggers.ADDRESS_LOGGER.info("put cluster node,the cluster name is " + cluster + "; the product name=" + product
-                + "; the ip list=" + ips);
+        Loggers.ADDRESS_LOGGER.info("放入集群节点，集群名称为 " + cluster + ";产品名称=" + product
+                + "; ip列表=" + ips);
         ResponseEntity<String> responseEntity;
         try {
             String serviceName = addressServerGeneratorManager.generateNacosServiceName(productName);
-            
+
             Cluster clusterObj = new Cluster();
             clusterObj.setName(clusterName);
             clusterObj.setHealthChecker(new AbstractHealthChecker.None());
@@ -103,35 +103,35 @@ public class AddressServerClusterController {
         } catch (Exception e) {
             responseEntity = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-        
+
         return responseEntity;
     }
-    
+
     /**
-     * Delete cluster.
+     * 删除集群。
      *
-     * @param product Ip list of products to be associated
-     * @param cluster Ip list of product cluster to be associated
-     * @param ips     will delete ips.
-     * @return delete result
+     * @param product 要关联的产品的ip列表
+     * @param cluster 要关联的产品集群的ip列表
+     * @param ips     将删除ips。
+     * @return 删除结果
      */
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public ResponseEntity deleteCluster(@RequestParam(required = false) String product,
-            @RequestParam(required = false) String cluster, @RequestParam String ips) {
+                                        @RequestParam(required = false) String cluster, @RequestParam String ips) {
         //1. prepare the storage name for product and cluster
         String productName = addressServerGeneratorManager.generateProductName(product);
         String clusterName = addressServerManager.getDefaultClusterNameIfEmpty(cluster);
-        
+
         //2. prepare the response name for product and cluster to client
         String rawProductName = addressServerManager.getRawProductName(product);
         String rawClusterName = addressServerManager.getRawClusterName(cluster);
         ResponseEntity responseEntity = ResponseEntity.status(HttpStatus.OK)
                 .body("product=" + rawProductName + ", cluster=" + rawClusterName + " delete success.");
         try {
-            
+
             String serviceName = addressServerGeneratorManager.generateNacosServiceName(productName);
             Service service = serviceManager.getService(Constants.DEFAULT_NAMESPACE_ID, serviceName);
-            
+
             if (service == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("product=" + rawProductName + " not found.");
             }
@@ -151,11 +151,11 @@ public class AddressServerClusterController {
                 responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(checkResult);
             }
         } catch (Exception e) {
-            
+
             responseEntity = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getCause());
         }
-        
+
         return responseEntity;
     }
-    
+
 }

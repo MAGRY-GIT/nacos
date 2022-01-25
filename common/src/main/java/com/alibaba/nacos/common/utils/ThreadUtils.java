@@ -92,7 +92,7 @@ public final class ThreadUtils {
     }
     
     /**
-     * Through the number of cores, calculate the appropriate number of threads; 1.5-2 times the number of CPU cores.
+     * 通过核数，计算出合适的线程数； CPU核心数的1.5-2倍。
      *
      * @return thread count
      */
@@ -101,9 +101,9 @@ public final class ThreadUtils {
     }
     
     /**
-     * Through the number of cores, calculate the appropriate number of threads.
+     * 通过核数，计算出合适的线程数。
      *
-     * @param threadMultiple multiple time of cores
+     * @param threadMultiple 多次核心
      * @return thread count
      */
     public static int getSuitableThreadCount(int threadMultiple) {
@@ -120,10 +120,10 @@ public final class ThreadUtils {
     }
     
     /**
-     * Shutdown thread pool.
+     * 关闭线程池。
      *
-     * @param executor thread pool
-     * @param logger   logger
+     * @param executor 线程池
+     * @param logger   日志
      */
     public static void shutdownThreadPool(ExecutorService executor, Logger logger) {
         executor.shutdown();

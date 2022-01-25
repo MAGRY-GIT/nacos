@@ -46,7 +46,7 @@ public class NamingFactory {
     }
     
     /**
-     * Create a new naming service.
+     * 创建一个新的命名服务。
      *
      * @param properties naming service properties
      * @return new naming service

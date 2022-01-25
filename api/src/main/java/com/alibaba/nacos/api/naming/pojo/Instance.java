@@ -29,7 +29,7 @@ import java.util.Map;
 import static com.alibaba.nacos.api.common.Constants.NUMBER_PATTERN;
 
 /**
- * Instance.
+ * 例子.
  *
  * @author nkorange
  */
@@ -39,54 +39,54 @@ public class Instance implements Serializable {
     private static final long serialVersionUID = -742906310567291979L;
     
     /**
-     * unique id of this instance.
+     * 此实例的唯一 ID。
      */
     private String instanceId;
     
     /**
-     * instance ip.
+     * 实例ip。
      */
     private String ip;
     
     /**
-     * instance port.
+     * 实例端口。
      */
     private int port;
     
     /**
-     * instance weight.
+     * 实例权重。
      */
     private double weight = 1.0D;
     
     /**
-     * instance health status.
+     * 实例健康状况。
      */
     private boolean healthy = true;
     
     /**
-     * If instance is enabled to accept request.
+     * 如果启用实例以接受请求。
      */
     private boolean enabled = true;
     
     /**
-     * If instance is ephemeral.
+     * 如果实例是短暂的。
      *
      * @since 1.0.0
      */
     private boolean ephemeral = true;
     
     /**
-     * cluster information of instance.
+     * 实例的集群信息。
      */
     private String clusterName;
     
     /**
-     * Service information of instance.
+     * 实例的服务信息。
      */
     private String serviceName;
     
     /**
-     * user extended attributes.
+     * 用户扩展属性。
      */
     private Map<String, String> metadata = new HashMap<String, String>();
     

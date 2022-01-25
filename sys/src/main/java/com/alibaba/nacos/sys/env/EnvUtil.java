@@ -59,7 +59,7 @@ public class EnvUtil {
     public static final String FUNCTION_MODE_NAMING = "naming";
     
     /**
-     * The key of nacos home.
+     *  nacos家的钥匙。
      */
     public static final String NACOS_HOME_KEY = "nacos.home";
     
@@ -447,10 +447,10 @@ public class EnvUtil {
     }
     
     /**
-     * Get a scale of available processor numbers from environment.
+     * 从环境中获取可用处理器数量的规模。
      *
-     * @param scale scale from 0 to 1.
-     * @return available processor numbers from environment, will not lower than 1.
+     * @param scale 从 0 到 1 缩放。
+     * @return环境中可用的处理器数量，不会低于 1。
      */
     public static int getAvailableProcessors(double scale) {
         if (scale < 0 || scale > 1) {

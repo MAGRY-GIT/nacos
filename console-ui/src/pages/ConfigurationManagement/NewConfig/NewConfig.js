@@ -337,7 +337,7 @@ class NewConfig extends React.Component {
     const url = 'v1/cs/configs';
     request({
       type: 'post',
-      contentType: 'application/x-www-form-urlencoded',
+      contentType: 'multipart / form-data',
       url,
       data: payload,
       beforeSend: () => {

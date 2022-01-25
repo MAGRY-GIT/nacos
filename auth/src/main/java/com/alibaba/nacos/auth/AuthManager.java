@@ -21,7 +21,7 @@ import com.alibaba.nacos.auth.model.Permission;
 import com.alibaba.nacos.auth.model.User;
 
 /**
- * Access control entry. Can be extended by 3rd party implementations.
+ * 访问控制条目。可以通过 3rd 方实现进行扩展。
  *
  * @author nkorange
  * @author mai.jh

@@ -34,7 +34,7 @@ import java.util.Properties;
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 
 /**
- * Abstract Naming client proxy.
+ * 抽象的 Naming client proxy.
  *
  * @author xiweng.yy
  */

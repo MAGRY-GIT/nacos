@@ -50,7 +50,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 
 /**
- * Server list manager.
+ *服务器列表管理器。
  *
  * @author xiweng.yy
  */

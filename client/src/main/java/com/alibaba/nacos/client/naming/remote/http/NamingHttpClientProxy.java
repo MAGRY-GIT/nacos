@@ -67,7 +67,7 @@ import java.util.Set;
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 
 /**
- * Naming proxy.
+ * 命名代理。
  *
  * @author nkorange
  */

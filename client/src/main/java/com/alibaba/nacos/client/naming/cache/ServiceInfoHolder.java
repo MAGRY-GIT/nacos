@@ -44,7 +44,7 @@ import java.util.concurrent.ConcurrentMap;
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 
 /**
- * Naming client service information holder.
+ * 命名客户服务信息持有者。
  *
  * @author xiweng.yy
  */
@@ -67,20 +67,27 @@ public class ServiceInfoHolder implements Closeable {
     private String cacheDir;
     
     public ServiceInfoHolder(String namespace, Properties properties) {
+        //初始化缓存文件
         initCacheDir(namespace, properties);
         if (isLoadCacheAtStart(properties)) {
-            this.serviceInfoMap = new ConcurrentHashMap<String, ServiceInfo>(DiskCache.read(this.cacheDir));
+            this.serviceInfoMap = new ConcurrentHashMap<>(DiskCache.read(this.cacheDir));
         } else {
-            this.serviceInfoMap = new ConcurrentHashMap<String, ServiceInfo>(16);
+            this.serviceInfoMap = new ConcurrentHashMap<>(16);
         }
         this.failoverReactor = new FailoverReactor(this, cacheDir);
         this.pushEmptyProtection = isPushEmptyProtect(properties);
     }
-    
+
+    /**
+     * 初始化缓存文件
+     * @param namespace
+     * @param properties
+     */
     private void initCacheDir(String namespace, Properties properties) {
         String jmSnapshotPath = System.getProperty(JM_SNAPSHOT_PATH_PROPERTY);
     
         String namingCacheRegistryDir = "";
+        //命名缓存注册表目录判空
         if (properties.getProperty(PropertyKeyConst.NAMING_CACHE_REGISTRY_DIR) != null) {
             namingCacheRegistryDir = File.separator + properties.getProperty(PropertyKeyConst.NAMING_CACHE_REGISTRY_DIR);
         }

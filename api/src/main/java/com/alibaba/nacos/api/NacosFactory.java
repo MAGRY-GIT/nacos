@@ -27,14 +27,14 @@ import com.alibaba.nacos.api.naming.NamingService;
 import java.util.Properties;
 
 /**
- * Nacos Factory.
+ * Nacos 工厂.
  *
  * @author Nacos
  */
 public class NacosFactory {
-    
+
     /**
-     * Create config service.
+     * 创建配置服务。
      *
      * @param properties init param
      * @return config
@@ -43,9 +43,9 @@ public class NacosFactory {
     public static ConfigService createConfigService(Properties properties) throws NacosException {
         return ConfigFactory.createConfigService(properties);
     }
-    
+
     /**
-     * Create config service.
+     * 创建配置服务。
      *
      * @param serverAddr server list
      * @return config
@@ -54,9 +54,9 @@ public class NacosFactory {
     public static ConfigService createConfigService(String serverAddr) throws NacosException {
         return ConfigFactory.createConfigService(serverAddr);
     }
-    
+
     /**
-     * Create naming service.
+     * 创建命名服务。
      *
      * @param serverAddr server list
      * @return Naming
@@ -65,9 +65,9 @@ public class NacosFactory {
     public static NamingService createNamingService(String serverAddr) throws NacosException {
         return NamingFactory.createNamingService(serverAddr);
     }
-    
+
     /**
-     * Create naming service.
+     * 创建命名服务。
      *
      * @param properties init param
      * @return Naming
@@ -76,9 +76,9 @@ public class NacosFactory {
     public static NamingService createNamingService(Properties properties) throws NacosException {
         return NamingFactory.createNamingService(properties);
     }
-    
+
     /**
-     * Create maintain service.
+     * 创建维护服务。
      *
      * @param serverAddr server address
      * @return NamingMaintainService
@@ -87,9 +87,9 @@ public class NacosFactory {
     public static NamingMaintainService createMaintainService(String serverAddr) throws NacosException {
         return NamingMaintainFactory.createMaintainService(serverAddr);
     }
-    
+
     /**
-     * Create maintain service.
+     * 创建维护服务。
      *
      * @param properties server address
      * @return NamingMaintainService

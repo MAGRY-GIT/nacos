@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Address server spring configuration.
+ * 地址服务器弹簧配置。
  *
  * @author xiweng.yy
  */

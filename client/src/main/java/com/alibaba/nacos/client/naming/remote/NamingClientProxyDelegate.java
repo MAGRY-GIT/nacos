@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit;
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 
 /**
- * Delegate of naming client proxy.
+ * 委托命名客户端代理。
  *
  * @author xiweng.yy
  */

@@ -22,7 +22,7 @@ import com.alibaba.nacos.core.auth.condition.PathRequestCondition;
 import java.util.Comparator;
 
 /**
- * Request mapping information. to find the matched method by request
+ * 请求映射信息。根据请求找到匹配的方法
  *
  * @author horizonzy
  * @since 1.3.2

@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * Nacos Naming Service.
+ * Nacos 命名服务。
  *
  * @author nkorange
  */
@@ -59,7 +59,7 @@ public class NacosNamingService implements NamingService {
     private static final String DOWN = "DOWN";
     
     /**
-     * Each Naming service should have different namespace.
+     * 每个命名服务应该有不同的命名空间。
      */
     private String namespace;
     
@@ -80,7 +80,12 @@ public class NacosNamingService implements NamingService {
     public NacosNamingService(Properties properties) throws NacosException {
         init(properties);
     }
-    
+
+    /**
+     * 初始化 Nacos 命名服务
+     * @param properties
+     * @throws NacosException
+     */
     private void init(Properties properties) throws NacosException {
         ValidatorUtils.checkInitParam(properties);
         this.namespace = InitUtils.initNamespaceForNaming(properties);

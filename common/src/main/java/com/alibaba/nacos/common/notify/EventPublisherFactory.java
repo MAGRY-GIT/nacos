@@ -19,14 +19,14 @@ package com.alibaba.nacos.common.notify;
 import com.alibaba.nacos.common.utils.BiFunction;
 
 /**
- * Event publisher factory.
+ * 事件发布者工厂。
  *
  * @author xiweng.yy
  */
 public interface EventPublisherFactory extends BiFunction<Class<? extends Event>, Integer, EventPublisher> {
-    
+
     /**
-     * Build an new {@link EventPublisher}.
+     * 构建一个新的{@link EventPublisher}。
      *
      * @param eventType    eventType for {@link EventPublisher}
      * @param maxQueueSize max queue size for {@link EventPublisher}

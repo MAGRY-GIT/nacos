@@ -19,14 +19,14 @@ package com.alibaba.nacos.common.lifecycle;
 import com.alibaba.nacos.api.exception.NacosException;
 
 /**
- * An interface is used to define the resource's close and shutdown, such as IO Connection and ThreadPool.
+ * 接口用于定义资源的关闭和关闭，例如IO Connection和ThreadPool。
  *
  * @author zongtanghu
  */
 public interface Closeable {
     
     /**
-     * Shutdown the Resources, such as Thread Pool.
+     * 关闭资源，例如线程池。
      *
      * @throws NacosException exception.
      */

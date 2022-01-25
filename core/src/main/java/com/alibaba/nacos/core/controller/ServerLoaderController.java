@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * controller to control server loader.
+ * 控制器来控制服务器加载程序。
  *
  * @author liuzunfei
  * @version $Id: ServerLoaderController.java, v 0.1 2020年07月22日 4:28 PM liuzunfei Exp $
@@ -95,7 +95,7 @@ public class ServerLoaderController {
     private ServerLoaderInfoRequestHandler serverLoaderInfoRequestHandler;
     
     /**
-     * Get current clients.
+     * 得到当前的客户。
      *
      * @return state json.
      */
@@ -107,7 +107,7 @@ public class ServerLoaderController {
     }
     
     /**
-     * Get server state of current server.
+     * 获取当前服务器的服务器状态。
      *
      * @return state json.
      */
@@ -121,7 +121,7 @@ public class ServerLoaderController {
     }
     
     /**
-     * Get server state of current server.
+     * 获取当前服务器的服务器状态。
      *
      * @return state json.
      */
@@ -231,7 +231,7 @@ public class ServerLoaderController {
     
     
     /**
-     * Get server state of current server.
+     * 获取当前服务器的服务器状态。
      *
      * @return state json.
      */
@@ -244,7 +244,7 @@ public class ServerLoaderController {
     }
     
     /**
-     * Get current clients.
+     * 得到当前的客户。
      *
      * @return state json.
      */

@@ -20,25 +20,25 @@ import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
 
 /**
- * Config Service Interface.
+ * 配置服务接口。
  *
  * @author Nacos
  */
 public interface ConfigService {
     
     /**
-     * Get config.
+     * 获取配置。
      *
-     * @param dataId    dataId
-     * @param group     group
-     * @param timeoutMs read timeout
-     * @return config value
+     * @param dataId    数据标识
+     * @param group     组
+     * @param timeoutMs 读取超时
+     * @return 配置值
      * @throws NacosException NacosException
      */
     String getConfig(String dataId, String group, long timeoutMs) throws NacosException;
     
     /**
-     * Get config and register Listener.
+     * 获取配置并注册监听器。
      *
      * <p>If you want to pull it yourself when the program starts to get the configuration for the first time, and the
      * registered Listener is used for future configuration updates, you can keep the original code unchanged, just add
@@ -69,7 +69,7 @@ public interface ConfigService {
     void addListener(String dataId, String group, Listener listener) throws NacosException;
     
     /**
-     * Publish config.
+     * 发布配置。
      *
      * @param dataId  dataId
      * @param group   group

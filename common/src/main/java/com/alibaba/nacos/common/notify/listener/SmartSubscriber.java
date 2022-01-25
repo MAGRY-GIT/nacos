@@ -21,26 +21,26 @@ import com.alibaba.nacos.common.notify.Event;
 import java.util.List;
 
 /**
- * Subscribers to multiple events can be listened to.
+ * 可以监听多个事件的订阅者。
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  * @author zongtanghu
  */
 @SuppressWarnings("PMD.AbstractClassShouldStartWithAbstractNamingRule")
 public abstract class SmartSubscriber extends Subscriber {
-    
+
     /**
-     * Returns which event type are smartsubscriber interested in.
+     * 返回智能订阅者感兴趣的事件类型。
      *
-     * @return The interestd event types.
+     * @return 感兴趣的事件类型。
      */
     public abstract List<Class<? extends Event>> subscribeTypes();
-    
+
     @Override
     public final Class<? extends Event> subscribeType() {
         return null;
     }
-    
+
     @Override
     public final boolean ignoreExpireEvent() {
         return false;

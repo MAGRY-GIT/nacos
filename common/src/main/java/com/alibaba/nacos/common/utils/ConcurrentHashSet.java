@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Concurrent Hash Set implement by {@link ConcurrentHashMap}.
+ * 并发哈希集通过{@link ConcurrentHashMap}实现。
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  */

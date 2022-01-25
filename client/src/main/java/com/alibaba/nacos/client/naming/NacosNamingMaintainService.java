@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Nacos naming maintain service.
+ * Nacos 命名维护服务。
  *
  * @author liaochuntao
  * @since 1.0.1

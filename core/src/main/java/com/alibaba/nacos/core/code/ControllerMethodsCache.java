@@ -18,24 +18,18 @@ package com.alibaba.nacos.core.code;
 
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.exception.runtime.NacosRuntimeException;
+import com.alibaba.nacos.common.utils.ArrayUtils;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.alibaba.nacos.core.auth.RequestMappingInfo;
 import com.alibaba.nacos.core.auth.RequestMappingInfo.RequestMappingInfoComparator;
 import com.alibaba.nacos.core.auth.condition.ParamRequestCondition;
 import com.alibaba.nacos.core.auth.condition.PathRequestCondition;
 import com.alibaba.nacos.sys.env.EnvUtil;
-import com.alibaba.nacos.common.utils.ArrayUtils;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -51,20 +45,20 @@ import static com.alibaba.nacos.sys.env.Constants.REQUEST_PATH_SEPARATOR;
 
 
 /**
- * Method cache.
+ * 缓存方法。
  *
  * @author nkorange
  * @since 1.2.0
  */
 @Component
 public class ControllerMethodsCache {
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerMethodsCache.class);
-    
+
     private ConcurrentMap<RequestMappingInfo, Method> methods = new ConcurrentHashMap<>();
-    
+
     private final ConcurrentMap<String, List<RequestMappingInfo>> urlLookup = new ConcurrentHashMap<>();
-    
+
     public Method getMethod(HttpServletRequest request) {
         String path = getPath(request);
         String httpMethod = request.getMethod();
@@ -91,7 +85,7 @@ public class ControllerMethodsCache {
         }
         return methods.get(bestMatch);
     }
-    
+
     private String getPath(HttpServletRequest request) {
         try {
             return new URI(request.getRequestURI()).getPath();
@@ -100,9 +94,9 @@ public class ControllerMethodsCache {
             throw new NacosRuntimeException(NacosException.NOT_FOUND, "Invalid URI");
         }
     }
-    
+
     private List<RequestMappingInfo> findMatchedInfo(List<RequestMappingInfo> requestMappingInfos,
-            HttpServletRequest request) {
+                                                     HttpServletRequest request) {
         List<RequestMappingInfo> matchedInfo = new ArrayList<>();
         for (RequestMappingInfo requestMappingInfo : requestMappingInfos) {
             ParamRequestCondition matchingCondition = requestMappingInfo.getParamRequestCondition()
@@ -113,23 +107,23 @@ public class ControllerMethodsCache {
         }
         return matchedInfo;
     }
-    
+
     /**
-     * find target method from this package.
+     * 从这个包中找到目标方法。
      *
      * @param packageName package name
      */
     public void initClassMethod(String packageName) {
         Reflections reflections = new Reflections(packageName);
         Set<Class<?>> classesList = reflections.getTypesAnnotatedWith(RequestMapping.class);
-        
+
         for (Class clazz : classesList) {
             initClassMethod(clazz);
         }
     }
-    
+
     /**
-     * find target method from class list.
+     * 从类列表中找到目标方法.
      *
      * @param classesList class list
      */
@@ -138,16 +132,20 @@ public class ControllerMethodsCache {
             initClassMethod(clazz);
         }
     }
-    
+
     /**
-     * find target method from target class.
+     * 从目标类中找到目标方法。
      *
      * @param clazz {@link Class}
      */
     private void initClassMethod(Class<?> clazz) {
+        //获取类中@RequestMapping注解
         RequestMapping requestMapping = clazz.getAnnotation(RequestMapping.class);
+        //循环value值
         for (String classPath : requestMapping.value()) {
+            //获取类中方法
             for (Method method : clazz.getMethods()) {
+                //判断@RequestMapping是否存在,则添加并退出当前循环，进入下一循环
                 if (!method.isAnnotationPresent(RequestMapping.class)) {
                     parseSubAnnotations(method, classPath);
                     continue;
@@ -165,39 +163,45 @@ public class ControllerMethodsCache {
             }
         }
     }
-    
+
+    /**
+     * 解析子注释
+     *
+     * @param method    方法
+     * @param classPath 路径
+     */
     private void parseSubAnnotations(Method method, String classPath) {
-        
+
         final GetMapping getMapping = method.getAnnotation(GetMapping.class);
         final PostMapping postMapping = method.getAnnotation(PostMapping.class);
         final PutMapping putMapping = method.getAnnotation(PutMapping.class);
         final DeleteMapping deleteMapping = method.getAnnotation(DeleteMapping.class);
         final PatchMapping patchMapping = method.getAnnotation(PatchMapping.class);
-        
+
         if (getMapping != null) {
             put(RequestMethod.GET, classPath, getMapping.value(), getMapping.params(), method);
         }
-        
+
         if (postMapping != null) {
             put(RequestMethod.POST, classPath, postMapping.value(), postMapping.params(), method);
         }
-        
+
         if (putMapping != null) {
             put(RequestMethod.PUT, classPath, putMapping.value(), putMapping.params(), method);
         }
-        
+
         if (deleteMapping != null) {
             put(RequestMethod.DELETE, classPath, deleteMapping.value(), deleteMapping.params(), method);
         }
-        
+
         if (patchMapping != null) {
             put(RequestMethod.PATCH, classPath, patchMapping.value(), patchMapping.params(), method);
         }
-        
+
     }
-    
+
     private void put(RequestMethod requestMethod, String classPath, String[] requestPaths, String[] requestParams,
-            Method method) {
+                     Method method) {
         if (ArrayUtils.isEmpty(requestPaths)) {
             String urlKey = requestMethod.name() + REQUEST_PATH_SEPARATOR + classPath;
             addUrlAndMethodRelation(urlKey, requestParams, method);
@@ -208,7 +212,14 @@ public class ControllerMethodsCache {
             addUrlAndMethodRelation(urlKey, requestParams, method);
         }
     }
-    
+
+    /**
+     * 添加Url和方法关系
+     *
+     * @param urlKey       地址
+     * @param requestParam 参数
+     * @param method       方法
+     */
     private void addUrlAndMethodRelation(String urlKey, String[] requestParam, Method method) {
         RequestMappingInfo requestMappingInfo = new RequestMappingInfo();
         requestMappingInfo.setPathRequestCondition(new PathRequestCondition(urlKey));

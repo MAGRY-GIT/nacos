@@ -31,34 +31,34 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 import static com.alibaba.nacos.common.notify.NotifyCenter.ringBufferSize;
 
 /**
- * The default event publisher implementation.
+ * 默认事件发布器实现。
  *
- * <p>Internally, use {@link ArrayBlockingQueue <Event/>} as a message staging queue.
+ * <p>在内部，使用{@link ArrayBlockingQueue <Event>}作为消息临时队列。
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  * @author zongtanghu
  */
 public class DefaultPublisher extends Thread implements EventPublisher {
-    
+
     protected static final Logger LOGGER = LoggerFactory.getLogger(NotifyCenter.class);
-    
+
     private volatile boolean initialized = false;
-    
+
     private volatile boolean shutdown = false;
-    
+
     private Class<? extends Event> eventType;
-    
+
     protected final ConcurrentHashSet<Subscriber> subscribers = new ConcurrentHashSet<>();
-    
+
     private int queueMaxSize = -1;
-    
+
     private BlockingQueue<Event> queue;
-    
+
     protected volatile Long lastEventSequence = -1L;
-    
+
     private static final AtomicReferenceFieldUpdater<DefaultPublisher, Long> UPDATER = AtomicReferenceFieldUpdater
             .newUpdater(DefaultPublisher.class, Long.class, "lastEventSequence");
-    
+
     @Override
     public void init(Class<? extends Event> type, int bufferSize) {
         setDaemon(true);
@@ -68,11 +68,11 @@ public class DefaultPublisher extends Thread implements EventPublisher {
         this.queue = new ArrayBlockingQueue<>(bufferSize);
         start();
     }
-    
+
     public ConcurrentHashSet<Subscriber> getSubscribers() {
         return subscribers;
     }
-    
+
     @Override
     public synchronized void start() {
         if (!initialized) {
@@ -84,24 +84,24 @@ public class DefaultPublisher extends Thread implements EventPublisher {
             initialized = true;
         }
     }
-    
+
     @Override
     public long currentEventSize() {
         return queue.size();
     }
-    
+
     @Override
     public void run() {
         openEventHandler();
     }
-    
+
     void openEventHandler() {
         try {
-            
-            // This variable is defined to resolve the problem which message overstock in the queue.
+
+            // 定义此变量是为了解决哪些消息在队列中积压的问题。
             int waitTimes = 60;
-            // To ensure that messages are not lost, enable EventHandler when
-            // waiting for the first Subscriber to register
+            // 为确保消息不丢失，请启用时的EventHandler
+            // 等待第一个登记人注册
             for (; ; ) {
                 if (shutdown || hasSubscriber() || waitTimes <= 0) {
                     break;
@@ -109,7 +109,7 @@ public class DefaultPublisher extends Thread implements EventPublisher {
                 ThreadUtils.sleep(1000L);
                 waitTimes--;
             }
-            
+
             for (; ; ) {
                 if (shutdown) {
                     break;
@@ -122,21 +122,21 @@ public class DefaultPublisher extends Thread implements EventPublisher {
             LOGGER.error("Event listener exception : ", ex);
         }
     }
-    
+
     private boolean hasSubscriber() {
         return CollectionUtils.isNotEmpty(subscribers);
     }
-    
+
     @Override
     public void addSubscriber(Subscriber subscriber) {
         subscribers.add(subscriber);
     }
-    
+
     @Override
     public void removeSubscriber(Subscriber subscriber) {
         subscribers.remove(subscriber);
     }
-    
+
     @Override
     public boolean publish(Event event) {
         checkIsStart();
@@ -148,36 +148,36 @@ public class DefaultPublisher extends Thread implements EventPublisher {
         }
         return true;
     }
-    
+
     void checkIsStart() {
         if (!initialized) {
             throw new IllegalStateException("Publisher does not start");
         }
     }
-    
+
     @Override
     public void shutdown() {
         this.shutdown = true;
         this.queue.clear();
     }
-    
+
     public boolean isInitialized() {
         return initialized;
     }
-    
+
     /**
-     * Receive and notifySubscriber to process the event.
+     * 接收和notifySubscriber来处理事件。
      *
      * @param event {@link Event}.
      */
     void receiveEvent(Event event) {
         final long currentEventSequence = event.sequence();
-        
+
         if (!hasSubscriber()) {
             LOGGER.warn("[NotifyCenter] the {} is lost, because there is no subscriber.");
             return;
         }
-        
+
         // Notification single event listener
         for (Subscriber subscriber : subscribers) {
             // Whether to ignore expiration events
@@ -186,21 +186,21 @@ public class DefaultPublisher extends Thread implements EventPublisher {
                         event.getClass());
                 continue;
             }
-            
-            // Because unifying smartSubscriber and subscriber, so here need to think of compatibility.
-            // Remove original judge part of codes.
+
+            // 因为统一了smartSubscriber和subscriber，所以这里需要考虑兼容性。
+            // 去除法典中原有的法官部分。
             notifySubscriber(subscriber, event);
         }
     }
-    
+
     @Override
     public void notifySubscriber(final Subscriber subscriber, final Event event) {
-        
+
         LOGGER.debug("[NotifyCenter] the {} will received by {}", event, subscriber);
-        
+
         final Runnable job = () -> subscriber.onEvent(event);
         final Executor executor = subscriber.executor();
-        
+
         if (executor != null) {
             executor.execute(job);
         } else {

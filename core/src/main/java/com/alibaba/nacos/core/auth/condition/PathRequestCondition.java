@@ -19,7 +19,7 @@ package com.alibaba.nacos.core.auth.condition;
 import static com.alibaba.nacos.sys.env.Constants.REQUEST_PATH_SEPARATOR;
 
 /**
- * request path info. method:{@link org.springframework.web.bind.annotation.RequestMapping#method()} path: {@link
+ * 请求路径信息. method:{@link org.springframework.web.bind.annotation.RequestMapping#method()} path: {@link
  * org.springframework.web.bind.annotation.RequestMapping#value()} or {@link org.springframework.web.bind.annotation.RequestMapping#value()}
  *
  * @author horizonzy

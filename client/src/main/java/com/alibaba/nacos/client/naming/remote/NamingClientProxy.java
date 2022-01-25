@@ -27,7 +27,7 @@ import com.alibaba.nacos.common.lifecycle.Closeable;
 import java.util.Set;
 
 /**
- * Naming Client Proxy.
+ * 命名客户机代理。
  *
  * @author xiweng.yy
  */

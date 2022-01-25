@@ -25,12 +25,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Unified thread pool creation factory, and actively create thread pool resources by ThreadPoolManager for unified life
- * cycle management {@link ExecutorFactory.Managed}.
+ * 统一的线程池创建工厂,并通过ThreadPoolManager主动创建线程池资源，进行统一的生命周期管理{@link ExecutorFactory.Managed}.
  *
- * <p>Unified thread pool creation factory without life cycle management {@link ExecutorFactory}.
+ * <p>没有生命周期管理的统一线程池创建工厂 {@link ExecutorFactory}.
  *
- * <p>two check style ignore will be removed after issue#2856 finished.
+ * <p>两个检查类型忽略将在issue2856完成后被删除。
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  */

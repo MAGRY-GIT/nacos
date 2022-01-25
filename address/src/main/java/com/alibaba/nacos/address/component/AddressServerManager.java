@@ -22,7 +22,7 @@ import com.alibaba.nacos.common.utils.StringUtils;
 import org.springframework.stereotype.Component;
 
 /**
- * This class holds the IP list of the CAI's address service.
+ * 此类保存 CAI 的地址服务的 IP 列表。
  *
  * @author deshao
  * @date 2016/4/28 20:58

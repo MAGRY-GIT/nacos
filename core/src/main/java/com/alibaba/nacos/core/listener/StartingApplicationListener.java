@@ -47,7 +47,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * init environment config.
+ * 初始化环境配置。
  *
  * @author <a href="mailto:huangxiaoyu1018@gmail.com">hxy1991</a>
  * @since 0.5.0
@@ -90,7 +90,11 @@ public class StartingApplicationListener implements NacosApplicationListener {
     public void starting() {
         starting = true;
     }
-    
+
+    /**
+     * 环境准备
+     * @param environment environment
+     */
     @Override
     public void environmentPrepared(ConfigurableEnvironment environment) {
         makeWorkDir();
@@ -150,7 +154,11 @@ public class StartingApplicationListener implements NacosApplicationListener {
     private void injectEnvironment(ConfigurableEnvironment environment) {
         EnvUtil.setEnvironment(environment);
     }
-    
+
+    /**
+     * 加载前属性
+     * @param environment
+     */
     private void loadPreProperties(ConfigurableEnvironment environment) {
         try {
             SOURCES.putAll(EnvUtil.loadProperties(EnvUtil.getApplicationConfFileResource()));
@@ -161,7 +169,11 @@ public class StartingApplicationListener implements NacosApplicationListener {
             throw new NacosRuntimeException(NacosException.SERVER_ERROR, e);
         }
     }
-    
+
+    /**
+     * 注册观察者
+     * @throws NacosException
+     */
     private void registerWatcher() throws NacosException {
         
         WatchFileCenter.registerWatcher(EnvUtil.getConfPath(), new FileWatcher() {

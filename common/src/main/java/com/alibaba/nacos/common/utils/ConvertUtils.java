@@ -21,7 +21,7 @@ import com.google.common.collect.Sets;
 import java.util.HashSet;
 
 /**
- * Value Convert Utils.
+ * 值转换实用程序。
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  */

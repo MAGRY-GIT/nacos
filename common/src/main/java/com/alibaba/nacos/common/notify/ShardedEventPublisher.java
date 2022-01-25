@@ -19,27 +19,27 @@ package com.alibaba.nacos.common.notify;
 import com.alibaba.nacos.common.notify.listener.Subscriber;
 
 /**
- * Sharded event publisher.
+ * 分片事件发布者。
  *
- * <p>To support one publisher for different events.
+ * <p>为不同的事件支持一个出版商。
  *
  * @author xiweng.yy
  */
 public interface ShardedEventPublisher extends EventPublisher {
     
     /**
-     * Add listener for default share publisher.
+     * 为默认共享发行者添加侦听器。
      *
      * @param subscriber    {@link Subscriber}
-     * @param subscribeType subscribe event type, such as slow event or general event.
+     * @param subscribeType 订阅事件类型，如慢速事件、普通事件。
      */
     void addSubscriber(Subscriber subscriber, Class<? extends Event> subscribeType);
     
     /**
-     * Remove listener for default share publisher.
+     * 删除默认共享发行者的侦听器。
      *
      * @param subscriber    {@link Subscriber}
-     * @param subscribeType subscribe event type, such as slow event or general event.
+     * @param subscribeType 订阅事件类型，如慢速事件、普通事件。
      */
     void removeSubscriber(Subscriber subscriber, Class<? extends Event> subscribeType);
 }

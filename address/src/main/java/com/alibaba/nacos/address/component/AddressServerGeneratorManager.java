@@ -28,7 +28,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * will generator some result by the input parameter.
+ * 将通过输入参数生成一些结果。
  *
  * @author pbting
  * @date 2019-07-01 8:53 PM

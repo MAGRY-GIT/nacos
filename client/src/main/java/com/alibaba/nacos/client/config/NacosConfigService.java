@@ -42,7 +42,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 /**
- * Config Impl.
+ * 配置实施。
  *
  * @author Nacos
  */
@@ -56,13 +56,13 @@ public class NacosConfigService implements ConfigService {
     private static final String DOWN = "DOWN";
     
     /**
-     * will be deleted in 2.0 later versions
+     * 2.0以后的版本会删除
      */
     @Deprecated
     ServerHttpAgent agent = null;
     
     /**
-     * long polling.
+     * 长轮询。
      */
     private final ClientWorker worker;
     

@@ -19,54 +19,54 @@ package com.alibaba.nacos.address.constant;
 import com.alibaba.nacos.naming.misc.UtilsAndCommons;
 
 /**
- * Uniform constant parameter naming for address servers and default values ​​for related parameters.
+ * 地址服务器的统一常量参数命名和默认值 ​​为相关参数。
  *
  * @author pbting
  * @date 2019-06-17 7:23 PM
  * @since 1.1.0
  */
 public interface AddressServerConstants {
-    
-    
+
+
     /**
-     * the default server port when create the Instance object.
+     * 创建实例对象时的默认服务器端口。
      */
     int DEFAULT_SERVER_PORT = 8848;
-    
+
     /**
-     * when post ips is not given the product,then use the default.
+     * 当 post ips 没有给出产品时，则使用默认值。
      */
     String DEFAULT_PRODUCT = "nacos";
-    
+
     /**
-     * the separator for service name between raw service name and group.
+     * 原始服务名称和组之间的服务名称分隔符。
      */
     String GROUP_SERVICE_NAME_SEP = "@@";
-    
+
     /**
-     * when post ips is not given the cluster,then use the default.
+     * 当 post ips 没有给集群时，则使用默认值。
      */
     String DEFAULT_GET_CLUSTER = "serverlist";
-    
+
     /**
-     * post multi ip will use the "," to separator.
+     * post multi ip 将使用“，”来分隔。
      */
     String MULTI_IPS_SEPARATOR = ",";
-    
+
     /**
-     * the default product name when deploy nacos with naming and config.
+     * 使用命名和配置部署 nacos 时的默认产品名称。
      */
     String ALIWARE_NACOS_DEFAULT_PRODUCT_NAME = "nacos.as.default";
-    
+
     /**
-     * when the config and naming will separate deploy,then must specify product name by the client.
+     * 当配置和命名分开部署时，必须由客户端指定产品名称。
      */
     String ALIWARE_NACOS_PRODUCT_DOM_TEMPLATE = "nacos.as.%s";
-    
+
     /**
-     * the url for address server prefix.
+     * 地址服务器前缀的 url。
      */
     String ADDRESS_SERVER_REQUEST_URL =
             UtilsAndCommons.NACOS_SERVER_CONTEXT + UtilsAndCommons.NACOS_SERVER_VERSION + "/as";
-    
+
 }

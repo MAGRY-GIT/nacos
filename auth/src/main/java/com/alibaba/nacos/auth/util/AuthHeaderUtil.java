@@ -22,14 +22,14 @@ import com.alibaba.nacos.common.utils.StringUtils;
 import com.alibaba.nacos.sys.utils.ApplicationUtils;
 
 /**
- * Auth header util.
+ * 身份验证标头实用程序。
  *
  * @author xiweng.yy
  */
 public class AuthHeaderUtil {
     
     /**
-     * Add identity info to Http header.
+     * 将身份信息添加到 Http 标头。
      *
      * @param header http header
      */

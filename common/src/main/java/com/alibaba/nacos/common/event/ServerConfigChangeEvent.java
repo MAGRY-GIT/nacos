@@ -19,11 +19,10 @@ package com.alibaba.nacos.common.event;
 import com.alibaba.nacos.common.notify.Event;
 
 /**
- * Server configuration changed event.
+ * 服务器配置更改事件。
  *
  * <p>
- * When nacos server configuration file (default nacos/conf/application.properties) changed, The event should be notify
- * to all subscriber.
+ * 当nacos服务器配置文件(default nacos/conf/application.properties) 更改后，事件应通知所有订阅者。
  * </p>
  *
  * @author xiweng.yy

@@ -34,7 +34,7 @@ import java.util.Properties;
 import java.util.concurrent.Callable;
 
 /**
- * Init utils.
+ * 初始化实用程序。
  *
  * @author liaochuntao
  * @author deshao
@@ -44,7 +44,7 @@ public class InitUtils {
     private static final String DEFAULT_END_POINT_PORT = "8080";
     
     /**
-     * Add a difference to the name naming. This method simply initializes the namespace for Naming. Config
+     * 为名称命名添加差异。此方法只是为命名空间初始化命名空间. Config
      * initialization is not the same, so it cannot be reused directly.
      *
      * @param properties properties
@@ -95,7 +95,7 @@ public class InitUtils {
     }
     
     /**
-     * Init web root context.
+     * 初始化web根上下文。
      *
      * @param properties properties
      * @since 1.4.1
@@ -183,7 +183,7 @@ public class InitUtils {
     }
     
     /**
-     * Register subType for serialization.
+     * 注册用于序列化的子类型。
      *
      * <p>
      * Now these subType implementation class has registered in static code. But there are some problem for classloader.

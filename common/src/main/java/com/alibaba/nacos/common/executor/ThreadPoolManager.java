@@ -31,9 +31,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * // TODO Access Metric.
  *
- * <p>For unified management of thread pool resources, the consumer can simply call the register method to {@link
- * ThreadPoolManager#register(String, String, ExecutorService)} the thread pool that needs to be included in the life
- * cycle management of the resource
+ * <p>对于线程池资源的统一管理，消费者可以简单的调用 register 方法 {@link
+ * ThreadPoolManager#register(String, String, ExecutorService)}需要纳入资源生命周期管理的线程池
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  */
@@ -73,7 +72,7 @@ public final class ThreadPoolManager {
     }
     
     /**
-     * Register the thread pool resources with the resource manager.
+     * 向资源管理器注册线程池资源。
      *
      * @param namespace namespace name
      * @param group     group name
@@ -137,9 +136,9 @@ public final class ThreadPoolManager {
     }
     
     /**
-     * Destroys all thread pool resources under this namespace.
+     * 销毁此命名空间下的所有线程池资源。
      *
-     * @param namespace namespace
+     * @param namespace 命名空间
      */
     public void destroy(final String namespace) {
         final Object monitor = lockers.get(namespace);
@@ -156,7 +155,9 @@ public final class ThreadPoolManager {
                     ThreadUtils.shutdownThreadPool(executor);
                 }
             }
+            //清理 Set<ExecutorService>
             resourcesManager.get(namespace).clear();
+            //删除Key
             resourcesManager.remove(namespace);
         }
     }
@@ -186,7 +187,7 @@ public final class ThreadPoolManager {
     }
     
     /**
-     * Shutdown thread pool manager.
+     * 关闭线程池管理器。
      */
     public static void shutdown() {
         if (!CLOSED.compareAndSet(false, true)) {

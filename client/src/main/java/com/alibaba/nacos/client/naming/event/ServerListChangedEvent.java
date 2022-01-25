@@ -19,7 +19,7 @@ package com.alibaba.nacos.client.naming.event;
 import com.alibaba.nacos.common.notify.SlowEvent;
 
 /**
- * Event of server list changed for naming.
+ * 事件的服务器列表更改命名。
  * 
  * @author gengtuo.ygt
  * on 2021/6/7

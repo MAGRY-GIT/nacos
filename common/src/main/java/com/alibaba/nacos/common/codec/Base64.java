@@ -19,9 +19,9 @@ package com.alibaba.nacos.common.codec;
 import java.nio.charset.Charset;
 
 /**
- * Provides Base64 encoding and decoding as defined by <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045</a>.
+ * 提供定义的Base64编码和解码 <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045</a>.
  *
- * <p>This class implements section <cite>6.8. Base64 Content-Transfer-Encoding</cite> from RFC 2045
+ * <p>这个类实现section <cite>6.8. Base64 Content-Transfer-Encoding</cite> from RFC 2045
  *
  * <cite>Multipurpose
  * Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies</cite> by Freed and Borenstein. </p> <p>
@@ -40,8 +40,8 @@ import java.nio.charset.Charset;
 public class Base64 {
     
     /**
-     * BASE32 characters are 6 bits in length. They are formed by taking a block of 3 octets to form a 24-bit string,
-     * which is converted into 4 BASE64 characters.
+     * BASE32字符长度为6位. 它们由3个八位组成一个24位的字符串,
+     * 哪个被转换成4个BASE64字符.
      */
     private static final int BITS_PER_ENCODED_BYTE = 6;
     

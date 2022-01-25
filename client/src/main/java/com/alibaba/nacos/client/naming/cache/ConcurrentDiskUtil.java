@@ -32,7 +32,7 @@ import java.nio.charset.CharsetDecoder;
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 
 /**
- * Concurrent Disk util.
+ * 并发盘很有用。
  *
  * @author nkorange
  */
@@ -119,7 +119,7 @@ public class ConcurrentDiskUtil {
     }
     
     /**
-     * write file content.
+     * 写入文件内容。
      *
      * @param file        file
      * @param content     content

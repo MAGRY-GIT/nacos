@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static com.alibaba.nacos.api.exception.NacosException.SERVER_ERROR;
 
 /**
- * Unified Event Notify Center.
+ * 统一事件通知中心。
  *
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  * @author zongtanghu
@@ -61,7 +61,7 @@ public class NotifyCenter {
     private static Class<? extends EventPublisher> clazz;
     
     /**
-     * Publisher management container.
+     * 出版商管理容器。
      */
     private final Map<String, EventPublisher> publisherMap = new ConcurrentHashMap<>(16);
     
@@ -127,7 +127,7 @@ public class NotifyCenter {
     }
     
     /**
-     * Shutdown the several publisher instance which notify center has.
+     * 关闭通知中心拥有的几个发布者实例。
      */
     public static void shutdown() {
         if (!CLOSED.compareAndSet(false, true)) {

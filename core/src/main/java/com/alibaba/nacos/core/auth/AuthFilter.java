@@ -43,7 +43,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Unified filter to handle authentication and authorization.
+ * 用于处理身份验证和授权的统一过滤器。
  *
  * @author nkorange
  * @since 1.2.0

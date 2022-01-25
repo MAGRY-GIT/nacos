@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Server list controller.
+ * 服务器列表控制器。
  *
  * @author pbting
  * @since 1.1.0
@@ -45,11 +45,11 @@ public class ServerListController {
     private AddressServerGeneratorManager addressServerBuilderManager;
     
     /**
-     * Get cluster.
+     * 获取集群。
      *
-     * @param product will get Ip list of that products to be associated
-     * @param cluster will get Ip list of that product cluster to be associated
-     * @return result of get
+     * @param product 将获得要关联的产品的 IP 列表
+     * @param cluster 将获得要关联的该产品集群的 IP 列表
+     * @return 得到的结果
      */
     @RequestMapping(value = "/{product}/{cluster}", method = RequestMethod.GET)
     public ResponseEntity<String> getCluster(@PathVariable String product, @PathVariable String cluster) {

@@ -28,7 +28,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * ServiceInfo.
+ * 服务信息.
  *
  * @author nkorange
  * @author shizhengxing
@@ -174,7 +174,7 @@ public class ServiceInfo {
     }
     
     /**
-     * Judge whether service info is validate.
+     *判断服务信息是否有效。
      *
      * @return true if validate, otherwise false
      */

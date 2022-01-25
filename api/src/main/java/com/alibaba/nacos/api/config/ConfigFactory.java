@@ -23,30 +23,31 @@ import java.lang.reflect.Constructor;
 import java.util.Properties;
 
 /**
- * Config Factory.
+ * 配置工厂.
  *
  * @author Nacos
  */
 public class ConfigFactory {
-    
+
     /**
-     * Create Config.
+     * 创建配置。
      *
-     * @param properties init param
-     * @return ConfigService
+     * @param properties
+     * @return 配置服务
      * @throws NacosException Exception
      */
     public static ConfigService createConfigService(Properties properties) throws NacosException {
         try {
+            //获取Nacos 类
             Class<?> driverImplClass = Class.forName("com.alibaba.nacos.client.config.NacosConfigService");
             Constructor constructor = driverImplClass.getConstructor(Properties.class);
-            ConfigService vendorImpl = (ConfigService) constructor.newInstance(properties);
-            return vendorImpl;
+            ///实例化
+            return (ConfigService) constructor.newInstance(properties);
         } catch (Throwable e) {
             throw new NacosException(NacosException.CLIENT_INVALID_PARAM, e);
         }
     }
-    
+
     /**
      * Create Config.
      *
